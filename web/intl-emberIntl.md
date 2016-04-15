@@ -1,5 +1,8 @@
 # intl api/ember-intl Notes
 
+## Vocabulary
+1. Common Locale Data Repository (CLDR) - XML-based data for i18n and l10n.  Typically integrated natively into languages and/or libraries.
+
 ## intl api
 
 The intl api allows for locale-specific sorting and formatting of date/time and numbers
@@ -52,4 +55,68 @@ new Intl.DateTimeFormat(['not-valid', 'es'],
     day: '2-digit',
     hour: 'numeric',
     minute: 'numeric'}).format(date); // 13/4 1:00 GMT-4
+```
+
+## ember-intl
+
+https://github.com/jasonmit/ember-intl
+
+### intl Polyfill:
+
+* Uses intl under the covers, so you'll need the polyfill if you're formatting dates/times/numbers on an unsupported browser
+* CDN based Polyfill
+  * Pull the polyfill from the CDN <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en-US,Intl.~locale.fr-FR,Intl.~locale.es-ES"></script>
+  * Note you must include the locales to pull
+  * Optimized to not include if the browser natively supports intl
+  * You'll want to disable the polyfill from the build in config/ember-intl.js
+* Manual Polyfill
+  * You'll want to enable the polyfill from the build in config/ember-intl.js (This is the default)
+  * By default, all locales will be pulled into your dist directory.  You can limit this in config via `locales`
+  * Copy the intl polyfill and any/all locale scripts into your index.html file
+    * ember-intl places these in assets/intl by default
+    * Scripts must be loaded before your app
+  * Note: Testing indicates that you can dynamically load the locale-specific scripts lazily.
+
+### Config
+* Config used to live under the `intl` key in config/environment.js
+* It has been moved to config/ember-intl.js
+* `baseLocale` is used at build-time only
+* `disablePolyfill` disables the build-time polyfill
+* `locales` is used to limit locales pulled in for polyfill; not needed if specifying translations statically
+
+### Default Locale (Build vs. Runtime)
+
+* The `baseLocale` config switch can be used to lint static translations.  ember-intl will warn if a translation bundle is missing a key that exists in the `baseLocale`
+
+#### Fallback
+
+To setup a fallback runtime locale, just provide a secondary locale when registering the locale with `services:intl`
+
+```
+this.get('intl').setLocale(['not-valid', 'en-us']); // Sets US English as a fallback
+```
+
+### Formatting
+
+formatting options are defined in `formats.js`
+
+* Hashed by type: `date, number, plural, select, selectordinal, time`
+* Keyed by the name you want to use in templates/code.
+
+### Template Helpers
+* The `t` helper is the general purpose helper to internationalize some text
+* The `format-html` helper is similar to t but does not escape HTML, allowing it to be interpreted in a template
+* You can use `format-date` or `format-time` to format any date.  Specify the format name with the `format` attribute
+
+#### Variable substitutions:
+* Variable substitutions can be within bundles.  They are specified with `{}` characters.
+```
+Hello {name}
+```
+* If no type is specifiec, a string value is assumed.
+* You can specify a type and formatName with the syntax `{variable[, formatType[, formatName]]}`
+```
+Hello {name}.  You have viewed this page {viewCount, number}. // Numerical formatting
+Hello {name}.  You have {accountBalance, number, USD} in your account. // Currency formating
+Hello {name}.  It is {now, date}. // Date formatting
 ```
