@@ -57,6 +57,22 @@ new Intl.DateTimeFormat(['not-valid', 'es'],
     minute: 'numeric'}).format(date); // 13/4 1:00 GMT-4
 ```
 
+## Tags for Identifying Languages (BCP \#47)
+
+### Format
+
+`<language>-<extlang>-<script>-<region>-<variant>-<extension>-<privateuse>`
+
+1. `<language>` ::= 2 or 3 char language tag.  One available for all possible languages or extensions
+1. `<extlang>` ::= 2 or 3 char language extension tag provided for legacy languages.  language codes exist for all extlangs, so they should not be used except in deprecations
+1. `<script>` ::= rarely used; ex chinese, audio only
+1. `<region>` ::= 2 or 3 char code to indicate a location in which a language is spoken.  Does not have to be a country
+
+### Usage
+* Use subtags sparingly and do not include them unless the provide additional clarity
+* Subtag registry: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+
 ## ember-intl
 
 https://github.com/jasonmit/ember-intl
@@ -120,3 +136,8 @@ Hello {name}.  You have viewed this page {viewCount, number}. // Numerical forma
 Hello {name}.  You have {accountBalance, number, USD} in your account. // Currency formating
 Hello {name}.  It is {now, date}. // Date formatting
 ```
+
+## References/Links
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl (MDN Intl Article)
+* https://www.w3.org/International/articles/language-tags/ (BCP #47)
+* https://github.com/jasonmit/ember-intl (ember-intl)
