@@ -87,7 +87,7 @@ https://github.com/jasonmit/ember-intl
   * You'll want to disable the polyfill from the build in config/ember-intl.js
 * Manual Polyfill
   * You'll want to enable the polyfill from the build in config/ember-intl.js (This is the default)
-  * By default, all locales will be pulled into your dist directory.  You can limit this in config via `locales`
+  * By default, all staticly referenced locales (defalt: `translations`) will be pulled into your `dist/assets` directory.  You can limit this in config via `locales`
   * Copy the intl polyfill and any/all locale scripts into your index.html file
     * ember-intl places these in assets/intl by default
     * Scripts must be loaded before your app
