@@ -2,6 +2,23 @@
 
 # Basic Concepts/Commands
 
+## Config
+
+show/view settings globally/per-repo
+
+### Examples
+```
+git config --list // list your current settings (directory/repo sensitive)
+
+git config --global user.name 'user.name' // Globally set your user name
+
+git config --global user.email 'user@example.com' // Globally set your email
+
+git config --global alias.ll log --one-line // Create an alias ll
+
+git config --global core.editor 'atom-beta --wait' // Set a custom editor
+```
+
 ## Update/Fetch
 
 Updates objects and refs from another repository
@@ -33,6 +50,14 @@ Utils for working with branches
 
 ```
 git branch <newBranch> // Create a new branch from the current head
+
+// Branch Cleanup
+
+git fetch -p // Prune your local cache of deleted remote branches
+
+git branch --merge // show branches that are fully merged into your current branch
+
+git branch -d <branchName> <branchName2> ... <branchNameN> // Delete local branches
 ```
 
 ## Checkout
@@ -79,7 +104,7 @@ git diff <hash>[[..]head] // show changes between hash and head
 
 git diff <hash1>..<hash2> path/to/file // diff changes to a file between hash1 and hash2
 
-git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file
+git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file (Note: head is implied as the comparison point)
 ```
 
 # Working with Remotes
