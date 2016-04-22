@@ -107,6 +107,34 @@ git diff <hash1>..<hash2> path/to/file // diff changes to a file between hash1 a
 git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file (Note: head is implied as the comparison point)
 ```
 
+## Log
+
+Show repo history
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| --oneline | Show commit on a single line; clip comment |
+| --reverse | Reverse the listing |
+| --&lt;num&gt; | number of commits to show |
+| --all | show remote commits too |
+| --grep=&lt;searchTerm&gt; | grep the commits |
+| --author=&lt;searchTerm&gt; | filter commits by author (email, username, etc) |
+| --graph | Show branches graphically (merge commits, etc) |
+
+### Examples
+
+```
+git log --oneline -20 // show the last 20 commits with a one line comment
+
+git log --graph --oneline -20 // show the last 20 commits graphically
+
+git log --author=torvalds // Show Linus's commits
+
+git log --grep=foo // Show commits containing "foo"
+```
+
 # Working with Remotes
 
 Remotes are remote repos used for team collaboration.  Typically they are used for your write-access remote repository (Commonly named `origin`) and the base repository you forked from in the github/oss model (Commonly called `upstream`)
