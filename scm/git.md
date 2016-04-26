@@ -2,6 +2,8 @@
 
 # Basic Concepts/Commands
 
+![Git Command Overview](http://assets.osteele.com/images/2008/git-transport.png)
+
 ## Config
 
 show/view settings globally/per-repo
@@ -133,6 +135,47 @@ git log --graph --oneline -20 // show the last 20 commits graphically
 git log --author=torvalds // Show Linus's commits
 
 git log --grep=foo // Show commits containing "foo"
+```
+
+## Stash
+
+Stash away your working/staged files for later
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| -u | Stash working files |
+
+### Examples
+
+```
+git stash [save] // saves your work
+
+git stash -u // saves your work; including working files
+
+git stash list // list your stashes
+
+git stash pop // apply the most recent stash to your current branch
+```
+
+## Merge
+
+Merge (Join) a development history (branch/commit/tag/etc) into another
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| --no-commit | Perform the merge but skip the auto-commit (Note: will commit if it can fast-forward) |
+| --no-ff | Create a merge commit even if branch could be fast-forwarded |
+
+### Examples
+
+```
+git merge develop // Merge develop into your current branch
+
+git merge --no-commit --no-ff develop // Merge develop into your current branch but hold commit for after inspecting the merge
 ```
 
 # Working with Remotes
