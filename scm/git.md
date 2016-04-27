@@ -178,6 +178,28 @@ git merge develop // Merge develop into your current branch
 git merge --no-commit --no-ff develop // Merge develop into your current branch but hold commit for after inspecting the merge
 ```
 
+## Rebase
+
+Re-apply your change(s) at the end of a base branch to maintain a linear history
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| -i | Interactive mode.  Lets you select which commits to keep, squash, etc. |
+
+### Examples
+
+```
+git rebase -i develop // Replay your current branch changes onto develop
+// Use editor to select which commits to keep, squash, etc.
+// The first commit must always be kept
+// You will have an opportunity to set the final comment afterwards
+
+// If any conflict are encountered, you'll have to deal with the conflicts and continue the rebase
+git rebase --continue
+```
+
 # Working with Remotes
 
 Remotes are remote repos used for team collaboration.  Typically they are used for your write-access remote repository (Commonly named `origin`) and the base repository you forked from in the github/oss model (Commonly called `upstream`)
