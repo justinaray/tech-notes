@@ -124,17 +124,38 @@ Show repo history
 | --grep=&lt;searchTerm&gt; | grep the commits |
 | --author=&lt;searchTerm&gt; | filter commits by author (email, username, etc) |
 | --graph | Show branches graphically (merge commits, etc) |
+| --no-pager | Print output directly without pager (Generic git option but very useful in log outputs)
 
 ### Examples
 
 ```
-git log --oneline -20 // show the last 20 commits with a one line comment
+git log // show project history in pager
 
-git log --graph --oneline -20 // show the last 20 commits graphically
+// Filtering
 
 git log --author=torvalds // Show Linus's commits
 
 git log --grep=foo // Show commits containing "foo"
+
+// Formatting
+
+git log --oneline -20 // show the last 20 commits with a one line comment
+
+git --no-pager log --oneline -20 // print the last 20 commits straight to stdout without a pager
+
+git log --graph --oneline -20 // show the last 20 commits graphically
+```
+
+## Show
+
+Show various types of objects (commits, files on other branches, etc.)
+
+### Examples
+
+```
+git show <hash> // Show the commit/diff at hash
+
+git show master:index.js // Cat the index.js file on the master branch
 ```
 
 ## Stash
