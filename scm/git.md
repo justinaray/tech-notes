@@ -221,6 +221,23 @@ git rebase -i develop // Replay your current branch changes onto develop
 git rebase --continue
 ```
 
+## Reset
+
+Reset current head to the specified branch, commit, etc
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| -hard | reset both the index and working tree |
+| -soft | move head to the specified state, but leave staged and working files |
+
+### Examples
+
+```
+git reset --hard head // Undo your work on the current branch and reset to the last commit state
+```
+
 # Working with Remotes
 
 Remotes are remote repos used for team collaboration.  Typically they are used for your write-access remote repository (Commonly named `origin`) and the base repository you forked from in the github/oss model (Commonly called `upstream`)
