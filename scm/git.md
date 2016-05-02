@@ -238,6 +238,25 @@ Reset current head to the specified branch, commit, etc
 git reset --hard head // Undo your work on the current branch and reset to the last commit state
 ```
 
+## Clean
+
+Remove untracked files/directories from the working directory
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| -n, --dry-run | Show what would be deleted from working tree |
+| -d | Remove directories as well |
+| -f | Force the delete.  Necessary if `clean.requireForce` is true |
+
+
+### Examples
+
+```
+git clean -df // Also remove directories; force
+```
+
 # Working with Remotes
 
 Remotes are remote repos used for team collaboration.  Typically they are used for your write-access remote repository (Commonly named `origin`) and the base repository you forked from in the github/oss model (Commonly called `upstream`)
