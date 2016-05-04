@@ -257,6 +257,26 @@ Remove untracked files/directories from the working directory
 git clean -df // Also remove directories; force
 ```
 
+## Revert
+
+Reverts previous commit(s)
+
+Useful if those changes have been previously pushed to a public branch and cannot be undone via local methods.
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| -n, --no-commit | Revert the commit, but don't commit it yet |
+| -e | Edit the revert commit message (default if run from cli) |
+
+### Examples
+
+```
+git revert <hashToClobber> // Undo <hashToClobber> and commit the change.  Commit comment editor will open
+git revert --no-commit <hashToClobber> // Undo <hashToClobber> but don't initiate a commit
+```
+
 # Working with Remotes
 
 Remotes are remote repos used for team collaboration.  Typically they are used for your write-access remote repository (Commonly named `origin`) and the base repository you forked from in the github/oss model (Commonly called `upstream`)
