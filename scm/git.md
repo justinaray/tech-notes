@@ -123,6 +123,7 @@ Show repo history
 | --all | show remote commits too |
 | --grep=&lt;searchTerm&gt; | grep the commits |
 | --author=&lt;searchTerm&gt; | filter commits by author (email, username, etc) |
+| --not <branch|commit> | exclude commits in the specified branch, commit, etc. |
 | --graph | Show branches graphically (merge commits, etc) |
 | --no-pager | Print output directly without pager (Generic git option but very useful in log outputs)
 
@@ -136,6 +137,8 @@ git log // show project history in pager
 git log --author=torvalds // Show Linus's commits
 
 git log --grep=foo // Show commits containing "foo"
+
+git log head --not develop // Show commits on your current head/branch that have not been made in develop
 
 // Formatting
 
@@ -302,3 +305,7 @@ Typically in an OSS model, you will not have direct write access to the target r
 1. git fetch upstream (Update the upstream repo)
 1. git checkout <localBranch>
 1. git rebase upstream/<targetBranch>
+
+# Reflog
+
+The Reflog is a local repository of changes that can be used to recover even destructive changes (e.g. deletes, resets).  The reflog is local only and is never pushed to remotes.
