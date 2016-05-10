@@ -19,6 +19,27 @@ defaults write com.apple.finder AppleShowAllFiles [YES|NO]
 killall Finder /System/Library/CoreServices/Finder.app // Restart all finder instances
 ```
 
+# Useful Keyboard Shortcuts
+
+| Category | Description | Command
+| --- | ---
+| General ||
+|| Sleep | CMD-Option-Power(Eject)
+| Screenshots ||
+|| Whole Screenshot to File (Desktop) | CMD-Shft-3
+|| Whole Screenshot to Clipboard | CMD-Ctrl-Shft-3
+|| Part of Screen to file | CMD-Shft-4
+|| Part of Screen to clipboard | CMD-Ctrl-Shft-4
+|| Window to file | CMD-Shft-4 [space]
+|| Window to clipboard | CMD-Ctrl-Shft-4 [space]
+
+# Useful Commands
+
+| Description | Command | Notes
+| --- | --- | --
+| List Open Process Ports | `lsof -n -i4TCP` | Like `netstat -pntl`
+
+
 # Dev Setup
 
 ## SW
