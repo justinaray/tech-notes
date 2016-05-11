@@ -39,6 +39,65 @@ killall Finder /System/Library/CoreServices/Finder.app // Restart all finder ins
 | --- | --- | --
 | List Open Process Ports | `lsof -n -i4TCP` | Like `netstat -pntl`
 
+# Homebrew
+
+> The missing package manager for OS X
+
+http://brew.sh/
+
+## How it works
+
+* Installs packages to /usr/local/Cellar
+* Symlinks them in /usr/local (e.g. opt, bin)
+* Puts /usr/local/bin on your PATH
+
+### Formula
+* Homebrew uses a list of ruby scripts called Formula
+* These Formula tell brew how to install/uninstall things
+* These Formula are simply sourced from a git repo homebrew/homebrew-core
+
+## Setup
+Follow website instructions.  Set up for single user by default
+
+[Multi-user Setup](http://blog.strug.de/2012/06/my-homebrew-multi-user-setup/) ... YMMV
+
+## Taps
+Taps are additional github repos containing additional formula
+
+### Common taps
+* homebrew/core (linked by default)
+* homebrew/versions
+* caskroom/cask
+
+### Casks
+A homebrew tap that lets you install binary distributions
+
+Puts them in /opt/homebrew-cask/Caskroom and symlinks them in /Applications
+
+Install with `brew tap caskroom/cask`
+
+## Useful Commands
+
+| Command | Description |
+| --- | --- |
+| `brew update` | Update brew and its formula |
+| `brew search <target>` | Search for `<target>` in formula (Includes taps) |
+| `brew info <target>` | Get info on `<target>` (including versions) |
+| `brew install <target>` | Install `<target>` |
+| `brew upgrade <target>` | Upgrade `<target>` |
+| `brew switch <target> <version>` | Run `<version>` of `<target>` |
+| `brew tap` | Lists taps |
+| `brew cask search '<searchText>'` | Search for a cask |
+| `brew cask install '<caskName>'` | Install a cask |
+
+## Customization
+
+Hack away.  It's just git.  You can clean up brew mods to update homebrew:
+
+```
+git reset --hard
+git clean -df
+```
 
 # Dev Setup
 
