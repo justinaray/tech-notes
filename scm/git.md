@@ -170,11 +170,14 @@ Stash away your working/staged files for later
 | Switch | Description |
 | --- | --- |
 | -u | Stash working files |
+| `save <message>` | Stash with a name/desc |
 
 ### Examples
 
 ```
 git stash [save] // saves your work
+
+git stash save "useful description" // stashes your work with a name/desc
 
 git stash -u // saves your work; including working files
 
