@@ -74,6 +74,9 @@ git checkout <branch> // checkout a branch to your staging area
 git checkout -b <branch> // create a new branch based on your current checked out branch (HEAD) and checkout/switch to that branch
 
 git checkout -b feature/<ticketNumber>_<featureName> [origin/develop]  // Create a new feature branch off of develop (git-flow model)
+
+git checkout <remote-branch-name>  // Shortcut to check out a remote branch as a local branch.
+// Notes: Remote name not used; Only works if you have one remote
 ```
 
 ## Diff
