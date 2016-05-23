@@ -210,7 +210,9 @@ git merge --no-commit --no-ff develop // Merge develop into your current branch 
 
 ## Rebase
 
-Re-apply your change(s) at the end of a base branch to maintain a linear history
+Re-apply your change(s) at the end of a base branch to maintain a linear history.
+
+**IMPORTANT**: _Never rebase a public branch shared by multiple people_
 
 ### Useful options/switches
 
@@ -228,6 +230,10 @@ git rebase -i develop // Replay your current branch changes onto develop
 
 // If any conflict are encountered, you'll have to deal with the conflicts and continue the rebase
 git rebase --continue
+
+git push --force
+// You'll have to force push additional rebased commits to your remote to update PRs.
+// Never do this to a shared branch!
 ```
 
 ## Reset
