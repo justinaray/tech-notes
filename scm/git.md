@@ -189,6 +189,26 @@ git stash list // list your stashes
 git stash pop // apply the most recent stash to your current branch
 ```
 
+## Updating commits
+
+Update a local commit's message or contents.  Technically it replaces the last commit.
+
+### Useful options/switches
+
+| Switch | Description |
+| --- | --- |
+| `-C <hash>` | Reuse the specified hash's commit msg |
+
+### Examples
+
+```
+git add -A // Optionally stage any changes to add to the commit
+git commit --amend // Adds staged files to the last commit.  Opens editor to provide message
+
+git add -A // Optionally stage any changes to add to the commit
+git commit --ammend -C HEAD // Adds staged files to the last commit.  Use head's message for commit
+```
+
 ## Merge
 
 Merge (Join) a development history (branch/commit/tag/etc) into another
