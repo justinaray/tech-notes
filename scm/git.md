@@ -19,6 +19,10 @@ git config --global user.email 'user@example.com' // Globally set your email
 git config --global alias.ll log --one-line // Create an alias ll
 
 git config --global core.editor 'atom-beta --wait' // Set a custom editor
+
+git config url."https://github.com/".insteadOf git@github.com: // Use https instead of SSH for github
+
+git config url."https://<username>@bitbucket.org/".insteadOf git@bitbucket.org: // Use https instead of SSH for bitbucket
 ```
 
 ## Update/Fetch
