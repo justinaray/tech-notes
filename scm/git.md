@@ -94,6 +94,7 @@ View differences between stagging, working, and refs in git.  Can view across br
 | --name-only | show just file names |
 | -b | ignore most whitespace |
 | -w | ignore all whitespace |
+| --diff-filter | filter diff results by change type |
 
 ### Version Grammar
 * [baseRef]~[n] The (optional nth) parent of a baseRef (head by default) (same branch)
@@ -114,6 +115,8 @@ git diff <hash>[[..]head] // show changes between hash and head
 git diff <hash1>..<hash2> path/to/file // diff changes to a file between hash1 and hash2
 
 git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file (Note: head is implied as the comparison point)
+
+git diff --filter-type=M // Only show modified files in diff
 ```
 
 ## Log
