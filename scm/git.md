@@ -116,7 +116,7 @@ git diff <hash1>..<hash2> path/to/file // diff changes to a file between hash1 a
 
 git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file (Note: head is implied as the comparison point)
 
-git diff --filter-type=M // Only show modified files in diff
+git diff --diff-filter=M // Only show modified files in diff
 ```
 
 ## Log
