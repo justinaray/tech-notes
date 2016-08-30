@@ -328,9 +328,13 @@ Remotes are remote repos used for team collaboration.  Typically they are used f
 Tracking branches allow a local and remote branch to work together.  It will enable you to pull in changes from a remote to your local branch, push your changes up, and protect you from out of band pushes.
 Git (specifically git clone and git branch) will often do a lot of the remote setup for you.  However, when creating a new branch, you will have to set up a remote tracking branch.
 
-`git push --set-upstream <origin> <remoteBranch>``  // Set up a remote tracking branch and push to it.
+`git push --set-upstream <remoteName> <branchName>`  // Push the current branch and set it as the named tracking branch.
 
-Ex: `git push --set-upstream origin feature/ISSUE1_short-desc-of-change`
+### Examples
+
+```
+git push --set-upstream origin feature/ISSUE1_short-desc-of-change
+```
 
 ## Update Remote Branches
 
@@ -343,7 +347,7 @@ Typically in an OSS model, you will not have direct write access to the target r
 1. git remote add upstream https://github.com/whoever/whatever.git
 1. git fetch upstream (Update the upstream repo)
 1. git checkout <localBranch>
-1. git rebase upstream/<targetBranch>
+1. git rebase `upstream/<targetBranch>`
 
 # Reflog
 
