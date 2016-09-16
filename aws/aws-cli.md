@@ -32,6 +32,9 @@ aws_secret_access_key = rAndomStringOfCharactersAndNumb3rs
 aws ec2 describe-instances [--profile profile-name] // Describe your instances
 aws s3 ls [--profile profile-name] // list s3 buckets
 aws s3 mb s3://<globallyUniqueBucketName> // create an s3 bucket
+
+aws s3 cp <localFile> s3://<bucketName>/path/to/object // Copy local file to S3.
+// Don't forget: this will set/reset permissions to private
 ```
 
 ## SSH
