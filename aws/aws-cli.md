@@ -35,6 +35,11 @@ aws s3 mb s3://<globallyUniqueBucketName> // create an s3 bucket
 
 aws s3 cp <localFile> s3://<bucketName>/path/to/object // Copy local file to S3.
 // Don't forget: this will set/reset permissions to private
+
+aws dynamodb list-tables [--profile profile-name] // List DynamoDb tables
+
+aws dynamodb scan --table-name <tableName> [--profile profile-name] // Read an entire Dynamo Table ... eventually consistent
+aws dynamodb delete-table --table-name <tableName> [--profile profile-name] // Delete a Dynamo Table
 ```
 
 ## SSH
