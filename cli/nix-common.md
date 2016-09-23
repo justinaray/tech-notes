@@ -9,8 +9,11 @@ Fetch a URL
 | -X, --request | Specify the HTTP Method |
 | -H, --header | Specify a request header |
 | -d, --data | HTTP Request payload |
+| -D, --dump-header | Print response headers |
 | -v, --verbose | Verbose Output (Response headers, etc) |
 | -w, --write-out | Write out text at end of transfer |
+| -o, --output | Write output to a file |
+| -s, --silent | Don't output progress or errors |
 
 ### Examples
 
@@ -25,6 +28,15 @@ curl \
 --verbose \
 --header "Accept: application/json, */*" \
 http://jsonplaceholder.typicode.com/posts/101
+
+# Print Headers Only
+# Note: `-D -` writes headers to stdout
+curl \
+-s \
+-D - \
+--header "Accept: application/json, */*" \
+-o /dev/null \
+http://jsonplaceholder.typicode.com/posts/1
 
 # Create a new post
 curl \
