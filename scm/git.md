@@ -99,7 +99,12 @@ View differences between stagging, working, and refs in git.  Can view across br
 ### Version Grammar
 * [baseRef]~[n] The (optional nth) parent of a baseRef (head by default) (same branch)
 * [baseRef]^[n] The (nth) parent of a baseRef (head by default) (but follows merges)
+* <branchName>@{upstream}, (@{u} alias) The upstream/tracking branch of the specified branch (defaults to current)
 * https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection#Ancestry-References
+
+### Comparison Mode
+* ref..ref1 (Default - same as space) Standard/Two-way diff of heads of branches
+* ref...ref Three-way merge of the two branches
 
 ### Examples
 
@@ -117,6 +122,10 @@ git diff <hash1>..<hash2> path/to/file // diff changes to a file between hash1 a
 git diff origin/master path/to/local/file  // diffs a file from another branch (even remotes!) with a local file (Note: head is implied as the comparison point)
 
 git diff --diff-filter=M // Only show modified files in diff
+
+git diff @{u} head // Diff of changes on head compare to remote
+
+git diff master@{u}...myBranch // Similar to a PR diff of myBranch onto master.  Assumes `git fetch` has been run.
 ```
 
 ## Log
