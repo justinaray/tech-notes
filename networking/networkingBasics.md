@@ -49,7 +49,7 @@ Routers work at Layer 3 of the OSI stack and allow for internetwork communicatio
 Additionally, routers allow the hosts of a local network to share an IP address via NAT (Network Address Translation).  The router will send the packet on behalf of the local
 host via the shared IP and do the translation of response packets back to the local network address space for distribution to the host.
 
-## Simplified Networking Algorithm
+## Host (Computer) Networking
 
 ### Mail Analogy to local and remote networking
 
@@ -75,3 +75,6 @@ host via the shared IP and do the translation of response packets back to the lo
     * Send the frame to the router
     * Router will take care of sending it to the next hop and NAT the response packet back to the host accordinly.
 
+### Intro Article on route tables, iptables in linux
+
+https://jvns.ca/blog/2018/07/24/ip-addresses-routing/
