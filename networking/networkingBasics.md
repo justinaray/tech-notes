@@ -62,18 +62,19 @@ host via the shared IP and do the translation of response packets back to the lo
 ### Simplified Networking "Algorithm"
 
 * If using a hostname, use DNS to convert hostname to IP
-* Use the Destination IP and host's subnet mask to determine destination network
+* Use the host's route tables to determine the destination locality and target interface
+    * This uses, among other things, the destination IP and host's subnet mask
 * If it's on the same network,
     * Build the packet with the local, destination IP address
     * Use ARP to get MAC address of local host 
     * Build the frame with the MAC address of the local host
-    * Send the frame directly to the destination host 
+    * Send the frame to the target interface.  The switch(es) will use ethernet (layer 2 protocol) to get the frame to the right destination
 * If it's on a different network,
     * Build the packet with the remore, destination IP address
-    * Use ARP to get MAC address of Default Gateway
+    * Use ARP to get MAC address of Default Gateway for the target interface
     * Build the frame with the destination of the Default Gateway
     * Send the frame to the router
-    * Router will take care of sending it to the next hop and NAT the response packet back to the host accordinly.
+    * Router will take care of sending it to the next hop and NAT the response packet back to the host accordingly.
 
 ### Intro Article on route tables, iptables in linux
 
