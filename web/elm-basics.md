@@ -150,7 +150,9 @@ intersect point, point =
 
 ###  Custom Types/Union Types
 
-You can think of these as enums on steroids.  You define the items of the enum (tags in elm) that define the cardinality of the enum.  Further, you can attach data to each tag.  And, that data can be different.
+You can think of these a bit as enums on steroids.  The items of the enum are called tags and they define the cardinality of the enum.  Further, you can attach variable data to each tag and switch/pattern match on the tag of the type.
+
+The enum analogy breaks down a bit in that the tags themselves serve as constructor functions of the type and you can create instances of the tags.  As elm is a functional language, you can and will pass the Tag constructor function into other functions.  A core example is passing a tag of your custom message type `type Msg` into functions for Commands, Subscriptions, etc.
 
 ```elm
 type Msg
@@ -162,6 +164,7 @@ type User
   = Regular String Int
   | Guest String
 
+-- "Built-in" type from elm/core
 type Maybe a
   = Just a
   | Nothing
@@ -169,7 +172,7 @@ type Maybe a
 
 ## Language Fundamentals
 * Functional, Immutable
-* Mostly Pure Functions.  Side-effects quarentined to specific parts of the app.
+* Mostly Pure Functions.  Side-effects quarentined to specific parts of the app via Commands, Subscriptions, etc.
 * Functions auto-curry
 ```elm
 {- This function takes two numbers and adds them together.
