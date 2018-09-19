@@ -13,6 +13,8 @@ My quick overview of Elm
 * Code is organized in modules.
 * The Module name must match it's file name.
 * Modules are usually centered around a Type and its functions/utilities.
+* Use exposing to limit items exported by the module
+    * Ex: `module MyType exposing (MyType, decoder, encode)`
 * Modules can be imported to be used by other modules.
 * Sub modules are possible by nesting a module in a directory.
     * Ex: Parser.Utils should be in Parser/Utils.elm
@@ -46,6 +48,11 @@ import List as L -- L.map
 -- open Imports
 import List exposing (..) -- map, foldl, concat
 import List exposing ( map, foldl ) -- map, foldl, List.concat
+
+-- If your module exposes an item with the same name as the module, it is a common pratice to expose it directly
+import MyType as MyType exposing ( MyType )
+myInstance = MyType 'foo' bar'
+MyType.encode myInstance
 ```
 
 # Project Organization
@@ -172,7 +179,7 @@ type Maybe a
 
 ## Language Fundamentals
 * Functional, Immutable
-* Mostly Pure Functions.  Side-effects quarentined to specific parts of the app via Commands, Subscriptions, etc.
+* Mostly Pure Functions.  Side-effects quarentined to specific parts of the app via Commands, Subscriptions, Ports, etc.
 * Functions auto-curry
 ```elm
 {- This function takes two numbers and adds them together.
