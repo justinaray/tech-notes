@@ -1,3 +1,23 @@
+## Working with background jobs
+
+```sh
+# Move the current, foreground job to a background job
+ctrl-z # Suspend the job
+jobs # List the jobs
+bg % <job-number> # Restart the job in the bg
+
+# Launch a command in the bg initially
+./some-command.sh &
+
+# List all running jobs
+jobs
+
+# FG a backgrounded job
+fg % <job-number>
+
+# [Note:] You may have to press [enter] to get back to a prompt from printed stdout
+```
+
 ## Curl
 
 Fetch a URL
