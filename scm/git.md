@@ -272,6 +272,26 @@ git push --force
 // Never do this to a shared branch!
 ```
 
+### Rebase a branch that has merge commits
+
+Have a branch you want to rebase but it already contains merge commits?
+This process will let you perform a poor man's rebase that will squash the commits and "rebase" on top of your target branch.  You don't have the opportunity to select the commits to squash, but it's easier than manually addressing merge conflicts introduced by the merge commits.
+
+```sh
+git checkout <target-branch>
+git pull
+git checkout -b <tmp-working-branch>
+git merge-base <target-branch> <branch-needing-rebased>
+git diff --no-color <merge-base-sha> <branch-needing-rebased> > diff
+git apply diff
+rm diff
+git add -A
+git commit --author='Orig Author Name <original-author-email@example.com>'
+git push origin <tmp-working-branch>:<branch-needing-rebased> --force-with-lease
+```
+
+Instructions source from Tom de Bruijn's App Signal [Blog Post](https://blog.appsignal.com/2016/09/27/git-rebasing-strategies.html)
+
 ## Reset
 
 Reset current head to the specified branch, commit, etc
