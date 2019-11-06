@@ -1,5 +1,45 @@
 # Git Notes
 
+# Git Primitives
+
+Object:
+    Some serialized, compressed content and an ID (the SHA-1 hash) used for addressing
+Tree:
+    A recursive structure of blobs (a git object, filename, metadata) and other trees stored by reference
+    Storing references to other trees is what allows git to track entire objects (files and dirs) and history as opposed to just file deltas while remaining efficient.
+    Trees are internally constructed when you use the staging area and git user level api, git add.
+Commit:
+    Stores a tree, it's parent commits (if any), and metadata (the author and committer info, timestamp, message, etc) under a new object and sha
+    Commits are the way that git stores history of a project over time via the parent commit refs.
+References (Refs):
+    User-friendly names/aliases which are pointers to git hashes
+    Refs are simple files stored in .git/refs that point to a sha
+    Refs make it easy to work with git objects/trees/commits without remembering hashes
+
+    Types of References: branches, tags, remotes
+
+        branch:
+            A reference to a sha that is the tip of commit chain.
+            This reference will be moved as you work with the branch so that it always stores the tip
+        tag:
+            annotated:
+                Contains a ref to a base object (usually a commit), message, tagger, and other metadata in a new object. 
+                Stored in .git/refs/tags
+                Like a branch reference, but it usually points to a single commit and it doesn't move.
+            lightweight:
+                Just a simple alias to a commit for simple use
+        Remote:
+            A named reference to another git repository.
+            Ex: /.git/refs/origin
+                HEAD
+                // other refs in that origin
+
+    the HEAD:
+        The pointer to your current working object (checkout)
+        This usually is a symbolic link to a branch (like master or develop)
+        If you checkout a specific sha, your head will be that SHA and will be in a detached HEAD state
+        stored in .git/HEAD
+
 # Basic Concepts/Commands
 
 ![Git Command Overview](http://assets.osteele.com/images/2008/git-transport.png)
