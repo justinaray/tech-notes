@@ -75,6 +75,8 @@ git fetch // updates objects and refs from another repository
 git pull // fetch and then merge into your current branch
 
 git pull --rebase // pull but rebase instead of merge
+
+git fetch --tags [--force] // fetch remote including remote tags (use force to overwrite local, conflicting tags)
 ```
 
 ## Branching
@@ -185,6 +187,7 @@ Show repo history
 | --not <branch|commit> | exclude commits in the specified branch, commit, etc. |
 | --graph | Show branches graphically (merge commits, etc) |
 | --no-pager | Print output directly without pager (Generic git option but very useful in log outputs)
+| --pretty | Customizable format string
 
 ### Examples
 
@@ -206,6 +209,8 @@ git log --oneline -20 // show the last 20 commits with a one line comment
 git --no-pager log --oneline -20 // print the last 20 commits straight to stdout without a pager
 
 git log --graph --oneline -20 // show the last 20 commits graphically
+
+git log --pretty="%h %aI %ae %s (%d)" // customized log display "<hash> <isoAuthorDate> <authorEmailAddr> <subject> (<tags, refs>)"
 ```
 
 ## Show
