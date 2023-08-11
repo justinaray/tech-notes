@@ -210,7 +210,10 @@ git --no-pager log --oneline -20 // print the last 20 commits straight to stdout
 
 git log --graph --oneline -20 // show the last 20 commits graphically
 
-git log --pretty="%h %aI %ae %s (%d)" // customized log display "<hash> <isoAuthorDate> <authorEmailAddr> <subject> (<tags, refs>)"
+# Fetch remote tags first (use --force to override local)
+git fetch --tags
+# customized log display "<hash> <isoAuthorDate> <authorEmailAddr> <subject> (<tags, refs>) [<committer>]"
+git log --all --pretty="%h %aI %ae %s (%d) [%ce]"
 ```
 
 ## Show
@@ -426,3 +429,14 @@ Typically in an OSS model, you will not have direct write access to the target r
 # Reflog
 
 The Reflog is a local repository of changes that can be used to recover even destructive changes (e.g. deletes, resets).  The reflog is local only and is never pushed to remotes.
+
+# Cleaning up merged branches
+
+```bash
+# get latest
+git fetch
+git checkout main
+git reset --hard @{u}
+# Remove merged branches - not matching key branches (e.g. main and develop for gitflow)
+git branch --merged main | grep -v -e '^\s*\(main\|develop\)\s*$'
+```
